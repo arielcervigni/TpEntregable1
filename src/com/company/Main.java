@@ -33,6 +33,20 @@ public class Main {
         Obrero obrero3 = new Obrero("Vinicius Jr", 38746516, 418.75961f, 20);
         Obrero obrero4 = new Obrero("Sergio Ramos", 154984654, 419.8792f, 33);
 
+        /// Lista con todos los empleados
+        ArrayList<Empleado> listaDeEmpleados = new ArrayList<>();
+        listaDeEmpleados.add(arquitecto1);
+        listaDeEmpleados.add(arquitecto2);
+        listaDeEmpleados.add(maestro1);
+        listaDeEmpleados.add(maestro2);
+        listaDeEmpleados.add(maestro3);
+        listaDeEmpleados.add(maestro4);
+        listaDeEmpleados.add(obrero1);
+        listaDeEmpleados.add(obrero2);
+        listaDeEmpleados.add(obrero3);
+        listaDeEmpleados.add(obrero4);
+
+
         ArrayList <Empleado> empleadosHotel = new ArrayList<>();
         empleadosHotel.add(arquitecto1);
         empleadosHotel.add(maestro1);
@@ -51,23 +65,43 @@ public class Main {
         empleadosCasa.add(obrero2);
         empleadosCasa.add(obrero3);
 
+
+        /// Ejercicio A
+        System.out.println("---------------------- Ejercicio A: ----------------------");
+        System.out.println(arquitecto1.crearPlanos());
+        System.out.println(maestro1.construir());
+        System.out.println(obrero1.construir());
+
+        /// Ejercicio B
+        ArrayList <Obra> arregloDeObras = new ArrayList<>();
+        Empresa arielConstruye = new Empresa("Ariel Construye",arregloDeObras,listaDeEmpleados);
+
+        // Ejercicio C
         // Instancio 3 Obras (un hotel, un comercio y uno domestico)
         Hotel unHotel = new Hotel("Buenos Aires 4675", 1588, 60, 800, empleadosHotel, 0, "Hotel de Ariel", 10);
         Comercio unComercio = new Comercio("Chile 1816", 150, 45, 980, empleadosComercio, 0, "Maker Electronica", "Electronica");
         Domestica unaCasa = new Domestica("Garay 6478",50,15,400,empleadosCasa,0,2);
+        /// Seteo el total de la obra.
         unHotel.setPrecioTotal(unHotel.calcularPrecioTotal());
         unComercio.setPrecioTotal(unComercio.calcularPrecioTotal());
         unaCasa.setPrecioTotal(unaCasa.calcularPrecioTotal());
 
         /// Agrego las 3 obras a la empresa
-        ArrayList <Obra> arregloDeObras = new ArrayList<>();
         arregloDeObras.add(unHotel);
         arregloDeObras.add(unComercio);
         arregloDeObras.add(unaCasa);
 
-        Empresa arielConstruye = new Empresa("Ariel Construye",arregloDeObras);
+        /// Ejercicio D
+        arielConstruye.setArregloDeObras(arregloDeObras);
 
-        System.out.println(arielConstruye.toString());
+        /// Ejercicio E
+        System.out.println("\n---------------------- Ejercicio E: ----------------------");
+        ArrayList <Empleado> listaDeEmpleadosDeUnaObra = arielConstruye.empleadoDeUnaObra("Garay 6478");
+        arielConstruye.mostrarArreglo(listaDeEmpleadosDeUnaObra);
+
+        /// Ejercicio F
+        System.out.println("\n---------------------- Ejercicio F: ----------------------");
+        System.out.println(arielConstruye.mostrarObraYMonto());
 
     }
 }

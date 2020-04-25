@@ -37,7 +37,7 @@ public class Empleado {
     public void setCosto (double costo) { this.costo = costo; }
 
     public String toString () {
-        return "\nNombre: " + this.nombre + " DNI: " + this.DNI +
+        return "Nombre: " + this.nombre + " DNI: " + this.DNI +
                 " Tel: " + this.telefono + " Costo: " + this.costo;
     }
 
