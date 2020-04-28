@@ -3,6 +3,7 @@ package com.company.Empleado;
 import com.company.Obra.Obra;
 
 import javax.xml.stream.events.StartElement;
+import java.util.ArrayList;
 
 public class Empleado {
 

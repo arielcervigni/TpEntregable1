@@ -19,7 +19,7 @@ public class Hotel extends Comercial {
         }
 
         public int getPisos () { return this.pisos; }
-        public void setRubro (int pisos) { this.pisos = pisos; }
+        public void setPisos (int pisos) { this.pisos = pisos; }
 
         public String toString ()
         {
