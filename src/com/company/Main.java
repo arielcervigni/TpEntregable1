@@ -50,7 +50,7 @@ public class Main {
         ArrayList<Empleado> empleadosHotel = new ArrayList<>();
         empleadosHotel.add(arquitecto1);
         empleadosHotel.add(maestro1);
-        empleadosHotel.add(obrero2);
+        //empleadosHotel.add(obrero2);
         empleadosHotel.add(obrero1);
         ArrayList<Empleado> empleadosComercio = new ArrayList<>();
         empleadosComercio.add(arquitecto2);
@@ -78,13 +78,16 @@ public class Main {
 
         // Ejercicio C
         // Instancio 3 Obras (un hotel, un comercio y uno domestico)
-        Hotel unHotel = new Hotel("Buenos Aires 4675", 1588, 60, 800, empleadosHotel, 0, "Hotel de Ariel", 10);
-        Comercio unComercio = new Comercio("Chile 1816", 150, 45, 980, empleadosComercio, 0, "Maker Electronica", "Electronica");
+        Hotel unHotel = new Hotel("Buenos Aires 4675", 159, 60, 800, empleadosHotel, 0, "Hotel de Ariel", 10);
+        // El comercio tiene 0 metros cuadrados cargados
+        Comercio unComercio = new Comercio("Chile 1816", 0,45, 980, empleadosComercio, 0, "Maker Electronica", "Electronica");
         Domestica unaCasa = new Domestica("Garay 6478", 50, 15, 400, empleadosCasa, 0, 2);
+
         /// Verifico que los empleados estén cargados correctamente
         System.out.println("Empleados casa: " + unaCasa.verificarEmpleados());
+        // El hotel no tiene cargada una lista de empleados, porque está mal cargada
         System.out.println("Empleados hotel: " + unHotel.verificarEmpleados());
-        System.out.println("Empleados casa:" + unaCasa.verificarEmpleados());
+        System.out.println("Empleados casa: " + unaCasa.verificarEmpleados());
         /// Seteo el total de la obra.
         unHotel.setPrecioTotal(unHotel.calcularPrecioTotal());
         unComercio.setPrecioTotal(unComercio.calcularPrecioTotal());
@@ -110,6 +113,8 @@ public class Main {
         /// Ejercicio F
         System.out.println("\n---------------------- Ejercicio F: ----------------------");
         System.out.println(arielConstruye.mostrarObrasYMonto());
+
+
     }
 
 }

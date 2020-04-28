@@ -57,7 +57,7 @@ public class Empresa {
     /// Ejercicio E
     // Crear un método para recorrer los empleados que trabajan en una obra.
     // Mostrando por pantalla los distintos datos particulares de cada empleado.
-    public ArrayList<Empleado> empleadoDeUnaObra(String direccion) {
+    public ArrayList<Empleado> empleadoDeUnaObra (String direccion) {
         ArrayList<Empleado> empleadosDeLaObra = new ArrayList<>();
         int i;
         for (i = 0; i < arregloDeObras.size(); i++) {
@@ -73,8 +73,12 @@ public class Empresa {
         int i;
         StringBuilder obras = new StringBuilder();
         for (i = 0; i < arregloDeObras.size(); i++) {
-            obras.append("Direccion: " + arregloDeObras.get(i).getDireccion() +
-                    " Precio Total: " + getArregloDeObras().get(i).getPrecioTotal() + "\n");
+
+            obras.append("Direccion: " + arregloDeObras.get(i).getDireccion());
+                    if (getArregloDeObras().get(i).getPrecioTotal() > 0)
+                    obras.append(" Precio Total: " + getArregloDeObras().get(i).getPrecioTotal() + "\n");
+                    else
+                        obras.append(". No se pudo calcular el precio total por falta de valores.\n");
         }
         return obras;
     }

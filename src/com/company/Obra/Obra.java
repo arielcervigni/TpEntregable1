@@ -91,15 +91,21 @@ public class Obra {
     public double calcularCostoDeEmpleados() {
         int i;
         double suma = 0;
-        for (i = 0; i < arregloDeEmpleados.size(); i++) {
-            suma += arregloDeEmpleados.get(i).getCosto();
+        if (!arregloDeEmpleados.isEmpty()) {
+            for (i = 0; i < arregloDeEmpleados.size(); i++) {
+                suma += arregloDeEmpleados.get(i).getCosto();
+            }
         }
         return suma;
     }
 
     public double calcularPrecioTotal() {
         double costoDeEmpleados = calcularCostoDeEmpleados();
-        return (costoPorMt * cantidadMts) + (costoDeEmpleados * cantidadDias);
+
+        if (cantidadMts > 0 && costoDeEmpleados >0)
+            return (costoPorMt * cantidadMts) + (costoDeEmpleados * cantidadDias);
+        else
+            return 0;
     }
 
     public StringBuilder verificarEmpleados() {
@@ -124,18 +130,25 @@ public class Obra {
             if (contadorArquitectos == 1 && (contadorMaestros >0 && contadorMaestros<3) && contadorObrero >= 2)
                 rta.append("Empleados cargados con éxito");
             else {
-                if (contadorArquitectos == 0)
-                    rta.append("No hay arquitecto asignado a la obra. ");
-                else if (contadorArquitectos > 1)
-                    rta.append("No puede haber más de un arquitecto en una obra. ");
+                if (contadorArquitectos == 0) {
+                    rta.append("No se cargaron los empleados. No hay arquitecto asignado a la obra.");
+                    arregloDeEmpleados.clear();
+                } else if (contadorArquitectos > 1) {
+                    rta.append("No se cargaron los empleados. No puede haber más de un arquitecto en una obra.");
+                    arregloDeEmpleados.clear();
+                }
 
-                if (contadorMaestros == 0)
-                    rta.append("No hay un maestro mayor de obra asignado a la obra. ");
-                else if (contadorMaestros > 3)
-                    rta.append("No puede haber más de tres maestros mayor de obra en una obra. ");
-
-                if (contadorObrero < 2)
-                    rta.append("No puede haber menos de dos obreros en una obra. ");
+                if (contadorMaestros == 0) {
+                    rta.append("No se cargaron los empleados. No hay un maestro mayor de obra asignado a la obra.");
+                    arregloDeEmpleados.clear();
+                } else if (contadorMaestros > 3) {
+                    rta.append("No se cargaron los empleados. No puede haber más de tres maestros mayor de obra en una obra. ");
+                    arregloDeEmpleados.clear();
+                }
+                if (contadorObrero < 2) {
+                    rta.append("No se cargaron los empleados. No puede haber menos de dos obreros en una obra.");
+                    arregloDeEmpleados.clear();
+                }
             }
         }
         return rta;
